@@ -1,0 +1,266 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "46eab56d-14c4-48ae-815a-42b74cdf134f",
+  "prevId": "180af3b1-960a-42aa-9bc7-8c7924f71b8a",
+  "tables": {
+    "drafts": {
+      "name": "drafts",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "base_version": {
+          "name": "base_version",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "payload": {
+          "name": "payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "saved_at": {
+          "name": "saved_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note_id": {
+          "name": "note_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "generated": {
+            "as": "(nullif(\"key\", 'new'))",
+            "type": "virtual"
+          }
+        }
+      },
+      "indexes": {
+        "drafts_note": {
+          "name": "drafts_note",
+          "columns": [
+            "note_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "drafts_note_id_notes_id_fk": {
+          "name": "drafts_note_id_notes_id_fk",
+          "tableFrom": "drafts",
+          "tableTo": "notes",
+          "columnsFrom": [
+            "note_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "drafts_storage_types": {
+          "name": "drafts_storage_types",
+          "value": "typeof(\"drafts\".\"key\") = 'text' AND typeof(\"drafts\".\"payload\") = 'text' AND typeof(\"drafts\".\"saved_at\") = 'integer' AND typeof(\"drafts\".\"base_version\") IN ('null', 'integer')"
+        },
+        "drafts_base_version": {
+          "name": "drafts_base_version",
+          "value": "(\"drafts\".\"key\" = 'new' AND \"drafts\".\"base_version\" IS NULL) OR (\"drafts\".\"key\" <> 'new' AND \"drafts\".\"base_version\" IS NOT NULL AND \"drafts\".\"base_version\" > 0)"
+        }
+      }
+    },
+    "notes": {
+      "name": "notes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "version": {
+          "name": "version",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "notes_list_cursor": {
+          "name": "notes_list_cursor",
+          "columns": [
+            "\"updated_at\" DESC",
+            "id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "notes_storage_types": {
+          "name": "notes_storage_types",
+          "value": "typeof(\"notes\".\"id\") = 'text' AND typeof(\"notes\".\"title\") = 'text' AND typeof(\"notes\".\"created_at\") = 'integer' AND typeof(\"notes\".\"updated_at\") = 'integer' AND typeof(\"notes\".\"version\") = 'integer'"
+        },
+        "notes_title_limit": {
+          "name": "notes_title_limit",
+          "value": "length(\"notes\".\"title\") <= 200"
+        },
+        "notes_positive_version": {
+          "name": "notes_positive_version",
+          "value": "\"notes\".\"version\" >= 1"
+        }
+      }
+    },
+    "todos": {
+      "name": "todos",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note_id": {
+          "name": "note_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "done": {
+          "name": "done",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "todos_note_position": {
+          "name": "todos_note_position",
+          "columns": [
+            "note_id",
+            "position"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "todos_note_id_notes_id_fk": {
+          "name": "todos_note_id_notes_id_fk",
+          "tableFrom": "todos",
+          "tableTo": "notes",
+          "columnsFrom": [
+            "note_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "todos_note_id_id_pk": {
+          "columns": [
+            "note_id",
+            "id"
+          ],
+          "name": "todos_note_id_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "todos_storage_types": {
+          "name": "todos_storage_types",
+          "value": "typeof(\"todos\".\"id\") = 'text' AND typeof(\"todos\".\"note_id\") = 'text' AND typeof(\"todos\".\"position\") = 'integer' AND typeof(\"todos\".\"done\") = 'integer' AND typeof(\"todos\".\"text\") = 'text'"
+        },
+        "todos_position_range": {
+          "name": "todos_position_range",
+          "value": "\"todos\".\"position\" >= 0 AND \"todos\".\"position\" < 200"
+        },
+        "todos_text_limit": {
+          "name": "todos_text_limit",
+          "value": "length(\"todos\".\"text\") <= 500"
+        },
+        "todos_done_boolean": {
+          "name": "todos_done_boolean",
+          "value": "\"todos\".\"done\" IN (0, 1)"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {
+      "notes_list_cursor": {
+        "columns": {
+          "\"updated_at\" DESC": {
+            "isExpression": true
+          }
+        }
+      }
+    }
+  }
+}
