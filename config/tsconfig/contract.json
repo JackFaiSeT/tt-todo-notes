@@ -1,0 +1,12 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023", "DOM"],
+    "types": [],
+    "noEmit": true,
+    "tsBuildInfoFile": "../../.nuxt/tsconfig.contract.tsbuildinfo"
+  },
+  "include": ["../../src/shared/contract/**/*.ts"]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "./node.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "include": ["../../.nuxt/nuxt.node.d.ts", "../../*.config.ts", "../**/*.mts"]
+}
