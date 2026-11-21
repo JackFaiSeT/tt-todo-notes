@@ -1,0 +1,77 @@
+@use '@assets/styles/global/mixins' as m;
+@use '../../../styles/card';
+
+.note-card {
+  @include card.frame;
+  @include m.transition(border-color);
+  position: relative;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-border-strong);
+  }
+
+  &__heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.0625rem;
+    gap: var(--space-4);
+  }
+
+  &__title {
+    min-width: 0;
+    font-size: 1.375rem;
+    overflow-wrap: anywhere;
+  }
+
+  &__title--muted {
+    color: var(--color-text-muted);
+  }
+
+  &__remove {
+    z-index: var(--z-card-action);
+    flex-shrink: 0;
+    margin: -0.4375rem -0.5625rem 0 0;
+  }
+
+  &__link::after {
+    position: absolute;
+    content: '';
+    inset: 0;
+  }
+
+  &__more {
+    @include m.muted-caption;
+    margin-top: 0.625rem;
+  }
+
+  &__footer {
+    @include card.footer;
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    gap: var(--space-16);
+  }
+
+  &__progress {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  &__progress-text,
+  &__date {
+    @include m.optical-text;
+  }
+
+  &__empty {
+    margin-bottom: var(--space-12);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  &__more + &__footer {
+    margin-top: 0.875rem;
+  }
+}
