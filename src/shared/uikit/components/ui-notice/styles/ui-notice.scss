@@ -1,0 +1,28 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) var(--space-16);
+  border: 1px solid var(--color-border-default);
+  border-left: 3px solid var(--color-action-primary);
+  background: var(--color-surface-sheet);
+  gap: var(--space-16);
+
+  @include m.mobile {
+    flex-wrap: wrap;
+  }
+
+  &__text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__action {
+    display: inline-flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+}

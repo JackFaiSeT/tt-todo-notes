@@ -1,0 +1,19 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-icon-button {
+  @include m.action;
+  @include m.transition(background-color, color, opacity);
+  width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-text-secondary);
+
+  @include m.state {
+    &:not(:disabled, [aria-disabled='true']) {
+      background: var(--color-surface-hover);
+    }
+  }
+}

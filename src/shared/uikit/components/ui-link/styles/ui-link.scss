@@ -1,0 +1,14 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-link {
+  @include m.action;
+  @include m.transition(color, border-color);
+  min-height: 2.5rem;
+  border-bottom: 1px solid currentcolor;
+  color: var(--color-action-primary);
+  gap: var(--space-12);
+
+  @include m.state {
+    color: var(--color-text-primary);
+  }
+}

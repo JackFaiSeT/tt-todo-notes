@@ -1,0 +1,6 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-skeleton {
+  @include m.skeleton-pulse;
+  display: block;
+}

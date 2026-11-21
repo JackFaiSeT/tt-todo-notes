@@ -1,0 +1,39 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-button {
+  @include m.button;
+
+  &--primary {
+    background: var(--color-action-primary);
+    color: var(--color-text-on-primary);
+
+    @include m.state {
+      &:not(:disabled, [aria-disabled='true']) {
+        background: var(--color-surface-inverse);
+        color: var(--color-text-inverse);
+      }
+    }
+  }
+
+  &--secondary {
+    border-color: var(--color-border-strong);
+  }
+
+  &--plain {
+    padding-inline: 0.5625rem;
+  }
+
+  &--plain,
+  &--secondary {
+    @include m.state {
+      &:enabled {
+        background: var(--color-surface-hover);
+      }
+    }
+  }
+
+  &--danger {
+    background: var(--color-action-danger);
+    color: var(--color-text-inverse);
+  }
+}

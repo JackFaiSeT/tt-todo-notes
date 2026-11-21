@@ -1,0 +1,57 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-checkbox {
+  position: relative;
+  display: grid;
+  width: 2.5rem;
+  height: 2.625rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  place-items: center;
+
+  &__input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  &__square {
+    @include m.checkbox-square;
+    @include m.transition(background-color, color);
+    width: 1.125rem;
+    height: 1.125rem;
+    pointer-events: none;
+  }
+
+  &__icon {
+    @include m.transition(opacity, transform);
+    width: 0.9375rem;
+    height: 0.9375rem;
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  &__input:disabled {
+    cursor: default;
+  }
+
+  &__input:disabled + &__square {
+    opacity: 0.46;
+  }
+
+  &__input:focus-visible + &__square {
+    @include m.focus-ring;
+  }
+
+  &__input:checked + &__square {
+    @include m.checked;
+  }
+
+  &__input:checked + &__square &__icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
