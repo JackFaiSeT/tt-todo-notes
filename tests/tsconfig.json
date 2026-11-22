@@ -1,0 +1,16 @@
+{
+  "extends": "../.nuxt/tsconfig.app.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true
+  },
+  "include": [
+    "../.nuxt/nuxt.d.ts",
+    "../.nuxt/nuxt.node.d.ts",
+    "factories/**/*.ts",
+    "unit/**/*.ts",
+    "integration/**/*.ts",
+    "setup/**/*.ts"
+  ],
+  "exclude": []
+}
