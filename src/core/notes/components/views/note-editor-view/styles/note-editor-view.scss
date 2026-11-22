@@ -1,0 +1,79 @@
+@use '@assets/styles/global/mixins' as m;
+@use './sheet';
+
+.note-editor-view {
+  &__body {
+    @include m.container;
+    max-width: 54.0625rem;
+    padding-block: 2.75rem 4.375rem;
+
+    @include m.mobile {
+      padding-block: 2.125rem calc(2.75rem + env(safe-area-inset-bottom));
+    }
+  }
+
+  &__heading {
+    margin-block: 0 var(--space-24);
+  }
+
+  &__sheet {
+    @include sheet.sheet;
+  }
+
+  &__title-section {
+    @include sheet.title-section;
+  }
+
+  &__title-label {
+    @include sheet.title-label;
+  }
+
+  &__title-input {
+    @include m.input;
+    @include sheet.title-field;
+    @include m.transition(border-color);
+
+    @include m.state {
+      border-color: var(--color-border-strong);
+    }
+  }
+
+  &__items-section {
+    @include sheet.section;
+  }
+
+  &__items-heading {
+    @include sheet.items-heading;
+  }
+
+  &__items-title {
+    @include sheet.items-title;
+  }
+
+  &__progress {
+    @include m.muted-caption;
+  }
+
+  &__list {
+    position: relative;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__row {
+    display: grid;
+  }
+
+  &__add {
+    @include sheet.add-action;
+  }
+
+  &__hint {
+    @include m.muted-caption;
+    margin-top: 0.875rem;
+  }
+
+  &__hint--error {
+    color: var(--color-action-danger);
+  }
+}

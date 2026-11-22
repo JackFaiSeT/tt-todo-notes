@@ -1,0 +1,88 @@
+@use '@assets/styles/global/mixins' as m;
+
+$TITLE_FONT_SIZE: 1.875rem;
+$TITLE_FONT_SIZE_MOBILE: 1.625rem;
+$TITLE_LINE_HEIGHT: 1.3;
+$TITLE_PADDING_BLOCK: 0.5rem;
+$TITLE_PADDING_INLINE: 0.75rem;
+$ROW_PADDING_INLINE: 0.5rem;
+$ROW_MIN_HEIGHT: 3rem;
+
+@mixin sheet {
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sheet);
+  margin: 0;
+  background: var(--color-surface-sheet);
+}
+
+@mixin section {
+  padding: 1.625rem var(--space-32);
+
+  @include m.mobile {
+    padding: 1.1875rem;
+  }
+}
+
+@mixin title-section {
+  @include section;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+@mixin title-label {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+@mixin field-frame {
+  border: 1px solid var(--color-border-field);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-page);
+}
+
+@mixin title-field {
+  @include field-frame;
+  padding: $TITLE_PADDING_BLOCK $TITLE_PADDING_INLINE;
+  margin-top: 0.5rem;
+  font-size: $TITLE_FONT_SIZE;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: $TITLE_LINE_HEIGHT;
+
+  @include m.mobile {
+    font-size: $TITLE_FONT_SIZE_MOBILE;
+  }
+}
+
+@mixin row-field {
+  min-height: 2.5rem;
+  flex: 1 1 0;
+  padding: 0.1875rem $ROW_PADDING_INLINE;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+}
+
+@mixin items-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.875rem;
+  gap: var(--space-16);
+}
+
+@mixin items-title {
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.24;
+}
+
+@mixin add-action {
+  @include m.button;
+  margin-top: var(--space-8);
+  color: var(--color-action-primary);
+  gap: 1.4375rem;
+  padding-inline: 0;
+}

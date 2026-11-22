@@ -1,0 +1,7 @@
+.note-editor-notices {
+  &__body {
+    overflow: hidden;
+    min-height: 0;
+    padding-block-end: var(--space-16);
+  }
+}
