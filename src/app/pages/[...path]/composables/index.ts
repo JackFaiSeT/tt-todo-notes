@@ -1,0 +1,1 @@
+export { useMissingRoutePage } from './useMissingRoutePage'

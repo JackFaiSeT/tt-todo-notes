@@ -1,0 +1,17 @@
+@use '@assets/styles/global/mixins' as m;
+
+.default {
+  &__skip {
+    position: absolute;
+    z-index: var(--z-skip);
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: var(--space-8) var(--space-16);
+    background: var(--color-surface-sheet);
+    color: var(--color-text-primary);
+
+    &:not(:focus) {
+      @include m.visually-hidden;
+    }
+  }
+}
