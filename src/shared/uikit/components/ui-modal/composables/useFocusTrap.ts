@@ -1,7 +1,7 @@
 import type { TemplateRef } from 'vue'
 import { KEYBOARD_KEYS } from '@uikit/constants/keyboard'
 import { useWindowListener } from '@uikit/composables'
-import { findInitialFocus, findWrapTarget } from '../utils/focusables'
+import { findInitialFocus, findTabTarget } from '../utils/focusables'
 import type { FocusTrapOptions } from '../types'
 
 export const useFocusTrap = (
@@ -32,12 +32,8 @@ export const useFocusTrap = (
       return
     }
 
-    const target = findWrapTarget(toValue(panel), event.shiftKey)
-
-    if (target !== undefined) {
-      event.preventDefault()
-      target?.focus()
-    }
+    event.preventDefault()
+    findTabTarget(toValue(panel), event.shiftKey)?.focus()
   }
 
   const onFocusIn = (event: FocusEvent): void => {
