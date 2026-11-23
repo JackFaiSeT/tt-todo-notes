@@ -1,0 +1,1 @@
+export const NOTE_CARD_SKELETON_ROWS = 3

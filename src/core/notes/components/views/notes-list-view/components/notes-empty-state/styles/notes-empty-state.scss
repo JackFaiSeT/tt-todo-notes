@@ -1,0 +1,86 @@
+@use '@assets/styles/global/mixins' as m;
+
+.notes-empty-state {
+  position: relative;
+  overflow: hidden;
+  min-height: 19.375rem;
+  padding: 3.125rem 6.5% 2.375rem max(4.875rem, 10%);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sheet);
+  background: var(--color-surface-sheet);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5%;
+    border-left: 1px solid var(--color-border-default);
+    content: '';
+  }
+
+  &__binding {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    inset: var(--space-32) auto var(--space-32) 2.2%;
+
+    i {
+      width: 0.4375rem;
+      height: 0.4375rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 50%;
+      background: var(--color-surface-page);
+    }
+  }
+
+  &__title {
+    font-size: clamp(1.5625rem, 3vw, 2rem);
+  }
+
+  &__description {
+    margin: 0.625rem 0 var(--space-16);
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+  }
+
+  &__line {
+    display: block;
+  }
+
+  &__rules {
+    margin-top: 1.875rem;
+
+    i {
+      display: block;
+      height: 1.3125rem;
+      border-top: 1px solid var(--color-border-default);
+    }
+  }
+
+  @include m.mobile {
+    min-height: 17.75rem;
+    padding: var(--space-32) 1.25rem 1.1875rem 2.5rem;
+
+    &::before {
+      left: 1.4375rem;
+    }
+
+    &__binding {
+      left: 0.5rem;
+
+      i {
+        width: 0.3125rem;
+        height: 0.3125rem;
+      }
+    }
+
+    &__line {
+      display: inline;
+
+      &:not(:last-child)::after {
+        content: ' ';
+      }
+    }
+  }
+}

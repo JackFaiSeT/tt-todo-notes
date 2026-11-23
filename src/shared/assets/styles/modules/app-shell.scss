@@ -1,0 +1,19 @@
+@use '../global/mixins' as m;
+
+.app-shell {
+  @include m.header-bar;
+
+  &__inner {
+    @include m.header-inner;
+  }
+
+  &__wordmark {
+    @include m.wordmark;
+  }
+
+  &__bar {
+    @include m.skeleton-pulse;
+    width: 5rem;
+    height: 1rem;
+  }
+}

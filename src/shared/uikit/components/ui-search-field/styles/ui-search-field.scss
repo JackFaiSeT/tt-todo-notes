@@ -1,0 +1,48 @@
+@use '@assets/styles/global/mixins' as m;
+
+.ui-search-field {
+  position: relative;
+  display: flex;
+  min-height: 2.625rem;
+  align-items: center;
+  border: 1px solid var(--color-border-field);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sheet);
+
+  @include m.transition(border-color);
+
+  @include m.state {
+    border-color: var(--color-border-strong);
+  }
+
+  &:focus-within {
+    @include m.focus-ring;
+    border-color: var(--color-border-strong);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    margin-inline-start: var(--space-12);
+  }
+
+  &__input {
+    @include m.input;
+    min-height: 2.5rem;
+    flex: 1 1 auto;
+    padding: 0 var(--space-8);
+    font-size: 0.9375rem;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+
+  &__clear {
+    flex-shrink: 0;
+  }
+}

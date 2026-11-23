@@ -1,0 +1,48 @@
+@use '@assets/styles/global/mixins' as m;
+
+.todo-preview {
+  display: grid;
+  padding: 0;
+  margin-bottom: var(--space-12);
+  gap: var(--space-8);
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+
+  &__item {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    font-size: 0.875rem;
+    gap: 0.5625rem;
+  }
+
+  &__text {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__item--done &__text {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+  }
+
+  &__square {
+    @include m.checkbox-square;
+    width: 0.8125rem;
+    height: 0.8125rem;
+    align-self: center;
+  }
+
+  &__item--done &__square {
+    @include m.checked;
+  }
+
+  &__icon {
+    width: 0.6875rem;
+    height: 0.6875rem;
+  }
+}

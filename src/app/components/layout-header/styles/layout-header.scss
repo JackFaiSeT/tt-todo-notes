@@ -1,0 +1,26 @@
+@use '@assets/styles/global/mixins' as m;
+
+.layout-header {
+  @include m.header-bar;
+
+  &__inner {
+    @include m.header-inner;
+  }
+
+  &__wordmark {
+    @include m.wordmark;
+  }
+
+  &__wordmark-text {
+    @include m.optical-text;
+  }
+
+  &__date {
+    @include m.muted-caption;
+    @include m.optical-text;
+
+    @include m.mobile {
+      font-size: 0.75rem;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "./strict.json",
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "paths": { "@shared/contract/*": ["../../src/shared/contract/*"] },
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true
+  }
+}

@@ -1,0 +1,116 @@
+@use '../global/mixins' as m;
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity var(--duration-page) var(--easing-standard);
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+.dialog-enter-active,
+.dialog-leave-active {
+  transition: opacity var(--duration-dialog) var(--easing-standard);
+
+  .ui-modal__panel {
+    transition: transform var(--duration-dialog) var(--easing-standard);
+  }
+}
+
+.dialog-leave-active {
+  pointer-events: none;
+}
+
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+
+  .ui-modal__panel {
+    transform: translateY(0.5rem);
+  }
+}
+
+.collapse-enter-active,
+.collapse-leave-active {
+  display: grid;
+  overflow: clip;
+  transition:
+    grid-template-rows var(--duration-base) var(--easing-standard),
+    opacity var(--duration-base) var(--easing-standard);
+
+  > * {
+    min-height: 0;
+  }
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.collapse-enter-to,
+.collapse-leave-from {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition:
+    opacity var(--duration-base) var(--easing-standard),
+    transform var(--duration-base) var(--easing-standard);
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+}
+
+.list-leave-active {
+  position: absolute;
+  pointer-events: none;
+}
+
+.toast-move,
+.toast-enter-active,
+.toast-leave-active {
+  transition:
+    opacity var(--duration-base) var(--easing-standard),
+    transform var(--duration-base) var(--easing-standard);
+}
+
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.toast-leave-active {
+  position: absolute;
+  pointer-events: none;
+}
+
+.page-enter-active,
+.page-leave-active,
+.dialog-enter-active,
+.dialog-leave-active,
+.collapse-enter-active,
+.collapse-leave-active,
+.list-move,
+.list-enter-active,
+.list-leave-active,
+.toast-move,
+.toast-enter-active,
+.toast-leave-active {
+  @include m.reduced-motion {
+    transition: none;
+
+    .ui-modal__panel {
+      transition: none;
+    }
+  }
+}

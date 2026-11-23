@@ -1,0 +1,107 @@
+@use '@assets/styles/global/mixins' as m;
+
+.note-editor-toolbar {
+  position: sticky;
+  z-index: var(--z-toolbar);
+  top: 0;
+  background: var(--color-surface-page);
+  border-block-end: 1px solid var(--color-border-default);
+
+  &__inner {
+    @include m.container;
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    padding-block: 0.625rem;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.1875rem;
+    margin-inline-start: auto;
+  }
+
+  &__divider {
+    height: 1.375rem;
+    border-left: 1px solid var(--color-border-default);
+    margin-inline: var(--space-4);
+  }
+
+  &__back {
+    @include m.action;
+    @include m.transition(color);
+    font-size: 0.9375rem;
+
+    @include m.state {
+      color: var(--color-action-primary);
+    }
+  }
+
+  &__back-text {
+    @include m.optical-text;
+  }
+
+  &__status {
+    @include m.muted-caption;
+    @include m.optical-text;
+  }
+
+  &__status-skeleton {
+    width: 7.5rem;
+    height: 0.75rem;
+  }
+
+  &__delete {
+    color: var(--color-action-danger);
+  }
+
+  &__compact {
+    min-width: 2.5rem;
+  }
+
+  &__label {
+    display: none;
+  }
+
+  @include m.desktop {
+    &__compact {
+      min-width: auto;
+    }
+
+    &__label {
+      display: inline;
+    }
+  }
+
+  @include m.mobile {
+    &__inner {
+      flex-wrap: wrap;
+      gap: 0.1875rem 0.4375rem;
+    }
+
+    &__back {
+      min-width: 5rem;
+    }
+
+    &__status {
+      flex: 1 1 auto;
+      font-size: 0.75rem;
+      text-align: right;
+    }
+
+    &__status-skeleton {
+      width: 6rem;
+      height: 0.625rem;
+      margin-left: auto;
+    }
+
+    &__actions {
+      width: 100%;
+    }
+
+    &__save {
+      margin-left: auto;
+    }
+  }
+}

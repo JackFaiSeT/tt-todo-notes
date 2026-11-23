@@ -1,0 +1,20 @@
+.notes-search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-32);
+  border: 1px dashed var(--color-border-field);
+  border-radius: var(--radius-sheet);
+  gap: var(--space-12);
+
+  &__title {
+    font-size: 1.375rem;
+    letter-spacing: -0.01em;
+  }
+
+  &__description {
+    max-width: 36rem;
+    color: var(--color-text-secondary);
+    overflow-wrap: anywhere;
+  }
+}

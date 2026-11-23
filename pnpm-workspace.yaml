@@ -1,0 +1,7 @@
+allowBuilds:
+  '@parcel/watcher': false
+  better-sqlite3: false
+  esbuild: true
+saveExact: true
+overrides:
+  stylelint-config-idiomatic-order>stylelint-order: 8.1.2

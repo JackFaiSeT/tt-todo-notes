@@ -1,0 +1,45 @@
+:root {
+  color-scheme: light;
+
+  --color-surface-page: var(--color-paper);
+  --color-surface-sheet: var(--color-ivory);
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: var(--color-slate);
+  --color-text-muted: var(--color-stone);
+  --color-border-default: var(--color-oat);
+  --color-action-primary: var(--color-rust);
+  --color-text-on-primary: var(--color-white);
+  --color-action-danger: var(--color-brick);
+  --color-surface-backdrop: var(--color-black-overlay);
+  --color-surface-hover: var(--color-border-default);
+  --color-surface-inverse: var(--color-text-primary);
+  --color-text-inverse: var(--color-surface-sheet);
+  --color-border-strong: var(--color-text-primary);
+  --color-focus-ring: var(--color-action-primary);
+  --color-surface-skeleton: var(--color-border-default);
+  --color-border-field: var(--color-pebble);
+  --color-scrollbar-thumb: var(--color-taupe);
+  --color-scrollbar-thumb-hover: var(--color-stone);
+  --color-scrollbar-track: var(--color-surface-page);
+  --color-action-success: var(--color-moss);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-surface-page: var(--color-charcoal);
+    --color-surface-sheet: var(--color-graphite);
+    --color-text-primary: var(--color-linen);
+    --color-text-secondary: var(--color-sand);
+    --color-text-muted: var(--color-ash);
+    --color-border-default: var(--color-shale);
+    --color-action-primary: var(--color-coral);
+    --color-text-on-primary: var(--color-umber);
+    --color-action-danger: var(--color-salmon);
+    --color-border-field: var(--color-flint);
+    --color-scrollbar-thumb: var(--color-slate);
+    --color-scrollbar-thumb-hover: var(--color-ash);
+    --color-action-success: var(--color-sage);
+  }
+}

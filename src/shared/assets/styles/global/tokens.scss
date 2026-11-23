@@ -1,0 +1,23 @@
+:root {
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-18: 1.125rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --radius-control: 0.125rem;
+  --radius-sheet: 0.1875rem;
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-dialog: 140ms;
+  --duration-page: 140ms;
+  --duration-skeleton: 1400ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --z-card-action: 1;
+  --z-toolbar: 2;
+  --z-toast: 9;
+  --z-modal: 10;
+  --z-skip: 11;
+  --font-family-base: roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', arial, sans-serif;
+}
