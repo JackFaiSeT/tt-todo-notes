@@ -1,0 +1,13 @@
+**
+!src
+!src/**
+!nuxt.config.ts
+!tsconfig.json
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!config/aliases.mts
+!config/nuxt/app.mjs
+!config/tsconfig/base.json
+!config/tsconfig/contract.json
+!config/tsconfig/strict.json

@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    ports:
+      - '${NOTES_BIND:-127.0.0.1}:8080:8080'
+    environment:
+      NUXT_ALLOWED_HOST: ${NUXT_ALLOWED_HOST:-}
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: [/tmp]
+    volumes:
+      - notes-data:/data
+    healthcheck:
+      interval: 10s
+      timeout: 4s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  notes-data:
